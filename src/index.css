@@ -8,7 +8,24 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  min-height: 100vh;
+  background-image: url('/BG-IMG.jpg'); /* ✅ Public folder image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in forwards, moveBg 30s linear infinite;
+  position: relative;
+}
+
+/* Light white overlay for better readability */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: -1;
 }
 
 a {
@@ -16,25 +33,24 @@ a {
   color: #000;
 }
 
-p {
-  line-height: 1.7;
-}
-
 ul {
   list-style: none;
+}
+
+p {
+  line-height: 1.7;
 }
 
 li {
   line-height: 2.2;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-weight: 600;
   margin-bottom: 10px;
 }
 
+/* Container */
 .container {
   width: 100%;
   max-width: 960px;
@@ -43,6 +59,7 @@ h3 {
   text-align: center;
 }
 
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -54,17 +71,13 @@ h3 {
 
 .header ul {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header ul li {
-  margin-left: 20px;
+  gap: 20px;
 }
 
 .header ul li a {
   display: flex;
   align-items: center;
+  transition: color 0.3s ease;
 }
 
 .header ul li a:hover {
@@ -75,24 +88,24 @@ h3 {
   margin-right: 5px;
 }
 
+/* Heading */
 .heading {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+  animation: slideIn 1s ease;
 }
 
 .heading p {
   color: #828282;
 }
 
+/* Boxes */
 .boxes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
   margin-bottom: 30px;
 }
 
@@ -100,14 +113,16 @@ h3 {
   padding: 30px;
   border: 1px solid #e6e6e6;
   border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxes div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .boxes h2 {
   margin-top: 20px;
-}
-
-.boxes a:hover {
-  color: #777;
 }
 
 .form {
@@ -131,11 +146,11 @@ h3 {
 }
 
 .form-group label {
-  text-align: left;
   display: block;
-  margin: 0 0 5px 3px;
+  margin-bottom: 5px;
 }
 
+/* Buttons */
 .btn {
   padding: 10px 20px;
   border: 1px solid #000;
@@ -145,15 +160,15 @@ h3 {
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  text-align: center;
-  appearance: button;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-.btn svg {
-  margin-right: 8px;
+.btn:hover {
+  transform: scale(1.05);
+  background-color: dimgrey;
 }
 
 .btn-reverse {
@@ -181,18 +196,11 @@ h3 {
   margin-bottom: 20px;
 }
 
-.btn:hover {
-  transform: scale(0.98);
-}
-
+/* Ticket UI */
 .ticket-created {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   padding: 50px;
-}
-
-.ticket-number {
-  margin-bottom: 30px;
 }
 
 .ticket-number h2 {
@@ -200,10 +208,7 @@ h3 {
   margin-bottom: 10px;
 }
 
-.ticket-number p {
-  font-size: 1.3rem;
-}
-
+.ticket-number p,
 .ticket-info {
   font-size: 1.3rem;
 }
@@ -213,8 +218,6 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
   background: #f4f4f4;
   padding: 10px 15px;
@@ -226,6 +229,7 @@ h3 {
   font-weight: 700;
 }
 
+/* Status */
 .status {
   background-color: #333;
   color: #fff;
@@ -239,20 +243,14 @@ h3 {
 
 .status-new {
   background-color: green;
-  color: #fff;
-  border-radius: 10px;
 }
 
 .status-open {
   background-color: steelblue;
-  color: #fff;
-  border-radius: 10px;
 }
 
 .status-close {
   background-color: darkred;
-  color: #fff;
-  border-radius: 10px;
 }
 
 .ticket-page {
@@ -260,19 +258,8 @@ h3 {
   text-align: left;
 }
 
-.ticket-page h2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .ticket-page .btn {
   margin-bottom: 30px;
-}
-
-.ticket-page .btn-block {
-  width: 100%;
-  margin-top: 30px;
 }
 
 .ticket-desc {
@@ -284,13 +271,14 @@ h3 {
   border-radius: 5px;
 }
 
+/* Notes */
 .note {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
-  text-align: left;
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
+  background: #fff;
 }
 
 .note-head {
@@ -298,7 +286,6 @@ h3 {
   padding: 5px 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -333,34 +320,10 @@ h3 {
   transform: scale(0.98);
 }
 
-p.status-in-progress {
-  color: orangered;
-}
-
-p.status-waiting {
-  color: red;
-}
-
-p.status-ready {
-  color: steelblue;
-}
-
-p.status-complete {
-  color: green;
-}
-
-footer {
-  position: sticky;
-  top: 95vh;
-  text-align: center;
-}
-
+/* Spinner */
 .loadingSpinnerContainer {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 5000;
   display: flex;
@@ -374,7 +337,26 @@ footer {
   border: 8px solid;
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
-  animation: spin 1.2s linear infinite;
+  animation: spin 1.2s linear infinite, glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveBg {
+  0% {
+    background-position: center top;
+  }
+  50% {
+    background-position: center center;
+  }
+  100% {
+    background-position: center top;
+  }
 }
 
 @keyframes spin {
@@ -386,21 +368,157 @@ footer {
   }
 }
 
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #000;
+  }
+  to {
+    box-shadow: 0 0 20px #333;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* Responsive */
 @media (max-width: 600px) {
+  /* Grid collapse for boxes */
   .boxes {
     grid-template-columns: 1fr;
   }
 
+  /* Form responsiveness */
   .form {
     width: 90%;
   }
 
+  .form-group label {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 15px;
+  }
+
+  /* Heading styles */
   .ticket-created h2,
   .heading h1 {
     font-size: 2rem;
+    text-align: center;
   }
 
   .heading p {
     font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /* Ticket info block */
+  .ticket,
+  .ticket-headings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    padding: 15px;
+    word-break: break-word;
+  }
+
+  /* Ticket number text */
+  .ticket-number h2 {
+    font-size: 1.4rem;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .ticket-number p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Ticket page wrapper */
+  .ticket-page {
+    padding: 10px;
+  }
+
+  /* Buttons inside ticket page */
+  .ticket-page .btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Description styling */
+  .ticket-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px;
+    word-break: break-word;
+    margin-bottom: 15px;
+  }
+
+  /* Status pill styling */
+  .status {
+    width: fit-content;
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 6px 14px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  /* Back button fix */
+  .btn-back {
+    display: none;
+  }
+
+  /* Global button adjustments */
+  .btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* Notes readability */
+  .note {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .note-head {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .note-date,
+  .delete-note {
+    font-size: 12px;
+  }
+
+  /* Modal width override */
+  .ReactModal__Content {
+    width: 90% !important;
+    max-width: 95vw !important;
+    padding: 20px !important;
   }
 }
+
+
