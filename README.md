@@ -1,12 +1,23 @@
-# React + Vite
+# HelpDesk Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the React.js frontend application for **HelpDesk**, a MERN stack SaaS ticketing platform that allows users to raise support tickets and track issue resolution.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Responsive and clean UI built with React.js and Redux Toolkit  
+- User authentication with JWT-based secure login/signup  
+- Ticket creation, update, and tracking interface  
+- Integration with backend RESTful APIs for seamless data handling  
+- Dynamic status updates with real-time UI-state sync after ticket actions  
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js  
+- Redux Toolkit  
+- Tailwind CSS  
+- Axios for API calls  
+
+## Backend Repository
+
+The backend API is maintained in a separate repository:  
+👉 [HelpDesk Backend (Node.js & Express.js)](https://github.com/Sanjal28/HelpDesk-BackEnd)
