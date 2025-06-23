@@ -14,7 +14,6 @@ This repository contains the React.js frontend application for **HelpDesk**, a M
 
 - React.js  
 - Redux Toolkit  
-- Tailwind CSS  
 - Axios for API calls  
 
 ## Backend Repository
