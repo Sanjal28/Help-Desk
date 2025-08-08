@@ -12,8 +12,18 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>Your help journey starts here</h1>
-        <p>Tap an option to continue</p>
+        {/* === CONDITIONAL HEADING TEXT === */}
+        {user && user.role === "superAgent" ? (
+          <>
+            <h1>Super Agent Dashboard</h1>
+            <p>Welcome, {user.name}. Manage tickets and view analytics.</p>
+          </>
+        ) : (
+          <>
+            <h1>Your help journey starts here</h1>
+            <p>Tap an option to continue</p>
+          </>
+        )}
       </section>
 
       {/* === CONDITIONAL RENDERING FOR SUPER AGENT vs USER === */}
@@ -24,10 +34,10 @@ function Home() {
             to="/superagent/analytics"
             className="btn btn-reverse btn-block"
           >
-            <FaChartBar /> View System Analytics
+            <FaChartBar />&nbsp;  View System Analytics
           </Link>
           <Link to="/superagent/tickets" className="btn btn-block">
-            <FaTasks /> View All Tickets
+            <FaTasks />&nbsp;  View All Tickets
           </Link>
         </>
       ) : (
